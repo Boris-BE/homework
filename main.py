@@ -4,7 +4,7 @@ a = 0
 while 0 < s:
     x = my_list[a]
     if x == 0:
-        break
+        continue
     elif x > 0:
         print(x)
         a = (a + 1)
