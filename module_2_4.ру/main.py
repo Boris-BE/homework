@@ -1,20 +1,19 @@
-numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}
-not_primes = {0}
-primes = {0}
-is_prime = True
-for i in range(1, 16):
-    if i == 1:
-        continue
-    for j in range(1, 16):
-        if j == 1:
-            continue
-        is_prime = (j % i == 0 and j != i)
-        if not is_prime:
-            continue
-        else:
-            not_primes.add(j)
-not_primes.discard(0)
-primes = numbers - not_primes
-primes.discard(1)
-print('Primes : ', primes)
-print('Not Primes : ', not_primes)
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+not_primes = []
+primes = []
+primes_ = {0}                         # множество для выборки уникальных значений
+s = len(numbers)                      # количество элементов списка
+for i in range(2, s + 1 ):
+    k = 0                              # счетчик
+    for j in range(2, s + 1):
+        if i % j == 0:
+            k = k + 1
+            if k > 1:
+                not_primes.append(i)
+                break
+            else:
+                primes_.add(j)        # запись в множество для отсечки повторяющихся элементов
+primes_.remove(0)                     # убрал 0 ( необходим был для создания множества )
+primes = list(primes_)                # преобразование в список из множества
+print('not_primes = ', not_primes)
+print('primes = ', primes)
